@@ -7,5 +7,9 @@
   </head>
   <body>
     <h1>paiza bbs</h1>
+    <p>{{ message }}</p>
+    {% for player in players %}
+      <p>{{ player }}はモンスターと戦った</p>
+    {% endfor %}
   </body>
 </html>
