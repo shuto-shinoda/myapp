@@ -74,6 +74,9 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# Database
+# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+
 DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
@@ -81,7 +84,7 @@ DATABASES = {
 #    }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'localhost',
+        'NAME': 'mydb',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
