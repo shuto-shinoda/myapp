@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Article
 
 def index(request):
-    context = {'message': 'Welcome my BBS',
-               'players': ['勇者', '戦士', '魔法使い', '忍者']
+    articles = Article.objects.all()
+    context = {
+        'message': 'Welcome my BBS',
+        'articles': articles,
     }
     return render(request, 'bbs/index.html', context)
