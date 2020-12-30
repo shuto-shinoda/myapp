@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>paiza bbs</title>
-    <style>body {padding: 10px}</style>
-  </head>
-  <body>
+{% extends './base.html' %}
+{% block content %}
     <h1>paiza bbs</h1>
     <p>{{ message }}</p>
     <p>{{ article.content }},{{user_name }}</p>
     <P><a href='{% url "bbs:index" %}'>一覧</a></P>
-  </body>
-</html>
+{% endblock %}
