@@ -17,3 +17,14 @@ def detail(request, id):
       'article': article,
     }
     return render(request, 'bbs/detail.html', context)
+
+def create(request):
+    article = Article(content='Hello BBS', user_name='paiza')
+    article.save()
+
+    articles = Article.objects.all()
+    context = {
+        'message': 'Create article',
+        'articles': articles,
+    }
+    return render(request, 'bbs/index.html', context)

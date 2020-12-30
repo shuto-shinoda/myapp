@@ -14,5 +14,8 @@
         <a href="{% url 'bbs:detail' article.id %}">詳細</a>
     </p>
     {% endfor %}
+    <p>
+      <a href='{% url "bbs:create" %}'>新規</a>
+    </p>
    </body>
 </html>
