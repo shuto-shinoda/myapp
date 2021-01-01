@@ -2,13 +2,20 @@
 {% block content %}
     <h1>paiza bbs</h1>
     <p>{{ message }}</p>
-    {% for article in articles %}
+
+    <table class='table table-striped table-hover'>
+      {% for article in articles %}
+        <tr>
+            <td>{{ article.content }}</td>
+            <td>{{ article.user_name }}</td>
+            <td>
+              <a href='{% url "bbs:detail" article.id %}' class='btn btn-outline-primary'>詳細</a>
+              <a href='{% url "bbs:delete" article.id %}' class='btn btn-outline-secondary'>削除</a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
     <p>
-        {{ article.content }},{{ article.user_name }},
-        <a href="{% url 'bbs:detail' article.id %}">詳細</a>
-        <a href="{% url 'bbs:delete' article.id %}">削除</a>
-    {% endfor %}
-    <p>
-      <a href='{% url "bbs:create" %}'>新規</a>
+      <a href='{% url "bbs:create" %}' class='btn btn-outline-primary'>新規</a>
     </p>
 {% endblock %}
