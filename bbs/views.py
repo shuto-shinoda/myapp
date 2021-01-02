@@ -18,7 +18,7 @@ def index(request):
         'searchForm': searchForm,
     }
     return render(request, 'bbs/index.html', context)
-    
+
 def detail(request, id):
     article = get_object_or_404(Article, pk=id)
     context = {
@@ -26,6 +26,9 @@ def detail(request, id):
       'article': article,
     }
     return render(request, 'bbs/detail.html', context)
+
+def new(request):
+  return HttpResponse('this is new')
 
 def create(request):
     article = Article(content='Hello BBS', user_name='paiza')
@@ -37,6 +40,12 @@ def create(request):
         'articles': articles,
     }
     return render(request, 'bbs/index.html', context)
+
+def edit(request, id):
+  return HttpResponse('this is edit' + str(id))
+
+def update(request, id):
+  return HttpResponse('this is update' + str(id))
 
 def delete(request, id):
     article = get_object_or_404(Article, pk=id)
