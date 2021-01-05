@@ -38,16 +38,16 @@ def new(request):
   return render(request, 'bbs/new.html', context)
 
 def create(request):
-    article = Article(content='Hello BBS', user_name='paiza')
-    article.save()
+    if request.method == 'POST':
+        articleForm = ArticleForm(request.POST)
+        if articleForm.is_valid():
+            article = articleForm.save()
 
-    articles = Article.objects.all()
     context = {
-        'message': 'Create article',
-        'articles': articles,
+        'message': 'Create article ' + str(article.id),
+        'article': article,
     }
-    return render(request, 'bbs/index.html', context)
-
+    return render(request, 'bbs/detail.html', context)
 def edit(request, id):
   return HttpResponse('this is edit' + str(id))
 
