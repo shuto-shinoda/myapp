@@ -3,5 +3,9 @@
     <h1>paiza bbs</h1>
     <p>{{ message }}</p>
     <p>{{ article.content }},{{user_name }}</p>
-    <P><a href='{% url "bbs:index" %}' class='btn btn-outline-primary'>一覧</a></P>
+    <div>
+      <a href='{% url "bbs:index" %}' class='btn btn-outline-primary'>一覧</a>
+      <a href='{% url "bbs:edit" article.id %}' class='btn btn-outline-primary'>編集</a>
+      <a href='{% url "bbs:delete" article.id %}' class='btn btn-outline-secondary'>削除</a>
+    </div>
 {% endblock %}

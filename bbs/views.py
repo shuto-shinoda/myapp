@@ -48,11 +48,30 @@ def create(request):
         'article': article,
     }
     return render(request, 'bbs/detail.html', context)
+
 def edit(request, id):
-  return HttpResponse('this is edit' + str(id))
+    article = get_object_or_404(Article, pk=id)
+    articleForm = ArticleForm(instance=article)
+
+    context = {
+        'message': 'Edit Article',
+        'article': article,
+        'articleForm': articleForm,
+    }
+    return render(request, 'bbs/edit.html', context)
 
 def update(request, id):
-  return HttpResponse('this is update' + str(id))
+  if request.method == 'POST':
+    article = get_object_or_404(Article, pk=id)
+    articleForm = ArticleForm(request.POST, instance=article)
+    if articleForm.is_valid():
+      articleForm.save()
+
+    context = {
+        'message': 'Update Article' + str(id),
+        'article': article,
+    }
+    return render(request, 'bbs/detail.html', context)
 
 def delete(request, id):
     article = get_object_or_404(Article, pk=id)
